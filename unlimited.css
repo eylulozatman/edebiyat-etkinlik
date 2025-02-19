@@ -1,0 +1,114 @@
+/* Genel Stil */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+h1 {
+    color: #333;
+}
+
+p {
+    font-size: 18px;
+    color: #555;
+}
+
+/* Sürükleme Alanları */
+.drop-zone {
+    width: 80%;
+    margin: 15px auto;
+    padding: 15px;
+    background: #ddd;
+    border: 2px dashed #bbb;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.drop-zone.correct {
+    background: #a4e69e;
+    border-color: #5cb85c;
+}
+
+.drop-zone.wrong {
+    background: #f5a3a3;
+    border-color: #d9534f;
+}
+
+/* Seçenekler */
+.options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.option-card {
+    background: #fff;
+    padding: 10px 15px;
+    margin: 5px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    user-select: none;
+}
+
+.option-card:hover {
+    background: #ddd;
+}
+
+.option-card:active {
+    transform: scale(0.95);
+}
+
+/* Butonlar */
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#newQuestionButton {
+    background: #007bff;
+    color: white;
+}
+
+#newQuestionButton:hover {
+    background: #0056b3;
+}
+
+#backButton {
+    background: #6c757d;
+    color: white;
+}
+
+#backButton:hover {
+    background: #545b62;
+}
+
+#nextButton {
+    display: none;
+    background: #28a745;
+    color: white;
+}
+
+#nextButton:hover {
+    background: #218838;
+}

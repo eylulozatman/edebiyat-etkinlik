@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edebiyat Eşleştirme Oyunu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Edebiyat Eşleştirme Oyunu</h1>
+        <div class="mode-selection">
+            <button id="unlimitedMode">Sınırsız Mod</button>
+            <button id="testMode">Test Modu</button>
+        </div>
+      </div>
+    <script>
+        document.getElementById('unlimitedMode').addEventListener('click', function() {
+            window.location.href = 'unlimited.html';
+        });
+        document.getElementById('testMode').addEventListener('click', function() {
+            window.location.href = 'testmod.html';
+        });
+    </script>
+</body>
+</html>
