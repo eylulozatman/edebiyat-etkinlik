@@ -5,6 +5,8 @@ body {
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
+    overflow: hidden; /* Ekranın kaymasını engeller */
+    touch-action: none; /* Mobilde sürükleme hareketlerini sınırlar */
 }
 
 .container {
