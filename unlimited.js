@@ -7,18 +7,26 @@ function loadNewWork() {
     // Önceki işaretlemeleri temizle
     document.getElementById("author-options").innerHTML = "";
     document.getElementById("period-options").innerHTML = "";
+    document.getElementById("genre-options").innerHTML = "";
+    
     document.getElementById("author-drop").innerText = "Yazar";
     document.getElementById("period-drop").innerText = "Dönem";
+    document.getElementById("genre-drop").innerText = "Tür";
+    
     document.getElementById("author-drop").classList.remove("correct", "wrong");
     document.getElementById("period-drop").classList.remove("correct", "wrong");
+    document.getElementById("genre-drop").classList.remove("correct", "wrong");
 
-    // **Yanlış seçenekler içinden 3 tane seç, doğru olanı ekle**
+    // **Yanlış seçeneklerden 3 tane seç, doğru olanı ekle**
     let wrongAuthors = works.filter(work => work.author !== currentWork.author);
     let shuffledAuthors = wrongAuthors.sort(() => 0.5 - Math.random()).slice(0, 3);
     shuffledAuthors.push({ author: currentWork.author }); // Doğru cevabı ekle
+    shuffledAuthors.sort(() => 0.5 - Math.random()); // Karıştır
 
-    // Şıkları karıştır
-    shuffledAuthors.sort(() => 0.5 - Math.random());
+    let wrongGenres = genres.filter(genre => genre !== currentWork.genre);
+    let shuffledGenres = wrongGenres.sort(() => 0.5 - Math.random()).slice(0, 3);
+    shuffledGenres.push(currentWork.genre); // Doğru türü ekle
+    shuffledGenres.sort(() => 0.5 - Math.random()); // Karıştır
 
     // **Şıkları yerleştir**
     shuffledAuthors.forEach(author => {
@@ -39,6 +47,16 @@ function loadNewWork() {
         periodCard.dataset.type = "period";
         periodCard.draggable = true;
         document.getElementById("period-options").appendChild(periodCard);
+    });
+
+    shuffledGenres.forEach(genre => {
+        let genreCard = document.createElement("div");
+        genreCard.classList.add("option-card");
+        genreCard.innerText = genre;
+        genreCard.dataset.genre = genre;
+        genreCard.dataset.type = "genre";
+        genreCard.draggable = true;
+        document.getElementById("genre-options").appendChild(genreCard);
     });
 
     document.getElementById("nextButton").style.display = "none"; // Yeni soru yüklendiğinde "Sonraki" butonu gizlenir
@@ -68,7 +86,8 @@ document.querySelectorAll(".drop-zone").forEach(zone => {
 
         // **Kart tipini kontrol et**
         if ((zone.id === "author-drop" && droppedType !== "author") ||
-            (zone.id === "period-drop" && droppedType !== "period")) {
+            (zone.id === "period-drop" && droppedType !== "period") ||
+            (zone.id === "genre-drop" && droppedType !== "genre")) {
             alert("Bu bölüme yanlış türde bir kart bırakamazsınız!");
             return;
         }
@@ -77,17 +96,18 @@ document.querySelectorAll(".drop-zone").forEach(zone => {
         zone.classList.remove("correct", "wrong"); // Önce tüm sınıfları temizle
 
         if ((zone.id === "author-drop" && droppedText === currentWork.author) ||
-            (zone.id === "period-drop" && droppedText === currentWork.period)) {
+            (zone.id === "period-drop" && droppedText === currentWork.period) ||
+            (zone.id === "genre-drop" && droppedText === currentWork.genre)) {
             zone.classList.add("correct"); // Doğruysa yeşil yap
         } else {
             zone.classList.add("wrong"); // Yanlışsa kırmızı yap
             return; // Yanlış olduğunda çık
         }
-        
 
-        // Eğer her iki bölge de doğru doldurulduysa, "Sonraki" butonu görünsün
+        // Eğer her üç bölge de doğru doldurulduysa, "Sonraki" butonu görünsün
         if (document.getElementById("author-drop").classList.contains("correct") &&
-            document.getElementById("period-drop").classList.contains("correct")) {
+            document.getElementById("period-drop").classList.contains("correct") &&
+            document.getElementById("genre-drop").classList.contains("correct")) {
             document.getElementById("nextButton").style.display = "block";
         }
     });

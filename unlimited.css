@@ -1,116 +1,127 @@
-/* Genel Stil */
+/* Genel Seçilemezlik */
+*:not(input):not(textarea) {
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Sayfa Genel Stil */
 body {
     font-family: Arial, sans-serif;
-    text-align: center;
     background-color: #f4f4f4;
+    text-align: center;
     margin: 0;
     padding: 0;
-    overflow: hidden; /* Ekranın kaymasını engeller */
-    touch-action: none; /* Mobilde sürükleme hareketlerini sınırlar */
 }
 
 .container {
+    width: 90%;
     max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
     background: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 50px auto;
     border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
-    color: #333;
+    font-size: 24px;
+    margin-bottom: 10px;
 }
 
 p {
-    font-size: 18px;
-    color: #555;
+    font-size: 16px;
+    color: #666;
+}
+
+/* Eser Gösterim Alanı */
+#work-display {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px 0;
 }
 
 /* Sürükleme Alanları */
 .drop-zone {
-    width: 80%;
-    margin: 15px auto;
-    padding: 15px;
-    background: #ddd;
-    border: 2px dashed #bbb;
+    width: 200px;
+    min-height: 50px;
+    background-color: #ffffff;
+    border: 2px dashed #ccc;
     border-radius: 8px;
-    font-size: 18px;
-    cursor: pointer;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px;
+    margin: 10px auto;
+    transition: background-color 0.3s ease;
 }
 
+/* Doğru & Yanlış Renkler */
 .drop-zone.correct {
-    background: #a4e69e;
-    border-color: #5cb85c;
+    background-color: #d4edda; /* Yeşil */
+    border-color: #28a745;
 }
 
 .drop-zone.wrong {
-    background: #f5a3a3;
-    border-color: #d9534f;
+    background-color: #f8d7da; /* Kırmızı */
+    border-color: #dc3545;
 }
 
-/* Seçenekler */
-.options {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-
+/* Seçenek Kartları */
 .option-card {
-    background: #fff;
+    display: inline-block;
     padding: 10px 15px;
     margin: 5px;
-    border: 1px solid #aaa;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
-    user-select: none;
-}
-
-.option-card:hover {
-    background: #ddd;
+    background-color: #f8f9fa; /* Açık gri */
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    cursor: grab;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .option-card:active {
-    transform: scale(0.95);
+    cursor: grabbing;
+}
+
+.option-card:hover {
+    background-color: #e2e6ea;
 }
 
 /* Butonlar */
 button {
-    padding: 10px 20px;
+    display: block;
+    width: 80%;
+    max-width: 200px;
+    padding: 10px;
+    margin: 10px auto;
     font-size: 16px;
-    margin: 10px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: background-color 0.3s ease;
 }
 
-#newQuestionButton {
-    background: #007bff;
+#nextButton {
+    background-color: #007bff;
     color: white;
+    display: none;
 }
 
-#newQuestionButton:hover {
-    background: #0056b3;
+#nextButton:hover {
+    background-color: #0056b3;
 }
 
 #backButton {
-    background: #6c757d;
+    background-color: #6c757d;
     color: white;
 }
 
 #backButton:hover {
-    background: #545b62;
-}
-
-#nextButton {
-    display: none;
-    background: #28a745;
-    color: white;
-}
-
-#nextButton:hover {
-    background: #218838;
+    background-color: #5a6268;
 }
